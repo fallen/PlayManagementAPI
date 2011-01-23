@@ -1,1 +1,18 @@
 This is an implementation of Play Management API based on JGroups
+
+
+General Use  :
+
+Play Management System :
+the play management system is meant to be instantiated on each node. There should
+be two implementations of this interface if client and server nodes are distinguished.
+
+
+RevokableToken :
+the API is based on the fact that revocableTokens should be kept private by
+their owners. if a player want to identify himself by an admin then he should transmit its
+accountUId. RevokableToken should not be transmitted between nodes, but only accountUId.
+
+NB : the xxxUId have a method "isEqualTo" instead of overriding "equals" because
+this latter solution would force fulfill the "equals contract" -> updating 
+hashcode() etc
