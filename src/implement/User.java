@@ -24,6 +24,13 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 		this.token = new Token();
 	}
 
+	public User(String loginName, String loginpwd) {
+		this.login = loginName;
+		this.passwd = loginpwd;
+		this.gameUid = new UId(null);
+		this.token = new Token();
+	}
+
 	@Override
 	public boolean isRevoked() {
 		return this.token.isLife();
