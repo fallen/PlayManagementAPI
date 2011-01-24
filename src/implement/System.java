@@ -1,5 +1,8 @@
 package implement;
 
+import org.jgroups.ChannelException;
+import org.jgroups.JChannel;
+
 import playmanagement.game.GamesManager;
 import playmanagement.game.instance.GamesInstancesManager;
 import playmanagement.gameroom.GameRoomsManager;
@@ -10,6 +13,16 @@ import playmanagement.user.LogonManager;
 
 public class System implements PlayManagementSystem {
 
+	public JChannel Channel;
+	public String JGroupsConfigFile = "udp.xml";
+	public String SignalingChannelName = "Signaling";
+	
+	
+	public System() throws ChannelException {
+		Channel = new JChannel(JGroupsConfigFile);
+		Channel.connect(SignalingChannelName);
+	}
+	
 	@Override
 	public AccountManager getAccountManager() {
 		// TODO Auto-generated method stub
