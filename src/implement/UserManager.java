@@ -19,7 +19,7 @@ public class UserManager implements AccountManager {
 	public AccountUId createAccount(String loginName, String loginpwd)
 			throws AccountManagementException {
 			User u = new User(loginName, loginpwd);
-			AccountUId id /*= u.getUserAccountUId(token)*/ = null;
+			AccountUId id = u.getUserAccountUId(null);
 			users.put(id, u);
 		return null;
 	}
