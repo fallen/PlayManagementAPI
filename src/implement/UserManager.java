@@ -19,9 +19,10 @@ public class UserManager implements AccountManager {
 	public AccountUId createAccount(String loginName, String loginpwd)
 			throws AccountManagementException {
 			User u = new User(loginName, loginpwd);
-			AccountUId id = u.getUserAccountUId(null);
+			Token t = u.getToken();
+			AccountUId id = u.getUserAccountUId(t);
 			users.put(id, u);
-		return null;
+		return id;
 	}
 
 	@Override
