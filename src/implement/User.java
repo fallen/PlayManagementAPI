@@ -9,18 +9,26 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 	private Token token;
 	private String login;
 	private String passwd;
-	private UId gameUid;
+	private UId uid;
 	
 
 	public UId getGameUid() {
-		return gameUid;
+		return uid;
 	}
 
 	public User()
 	{
 		this.login = null;
 		this.passwd = null;
-		this.gameUid = new UId(null);
+		this.uid = new UId(null);
+		this.token = new Token();
+	}
+	
+	public User(String login, String passwd)
+	{
+		this.login = login;
+		this.passwd = passwd;
+		this.uid = new UId(null);
 		this.token = new Token();
 	}
 
@@ -56,7 +64,7 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 
 	@Override
 	public boolean isEqualTo(AccountUId accountUid) {
-		return gameUid.getUid().equals(((User)accountUid).getGameUid().getUid());
+		return uid.getUid().equals(((User)accountUid).getGameUid().getUid());
 	}
 
 }
