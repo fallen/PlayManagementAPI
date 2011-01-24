@@ -31,7 +31,7 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 
 	@Override
 	public void setTimeOut(long nbrOfSecondsOfValidity) {
-		this.token.setTimeToLive(nbrOfSecondsOfValidity);
+		this.token.setTimeToLive(Long.valueOf(nbrOfSecondsOfValidity));
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 
 	@Override
 	public void logout(RevocableToken usertoken) {
-		((User)usertoken).setTimeOut(0);
+		((User)usertoken).setTimeOut(Long.valueOf(0));
 	}
 
 	@Override
