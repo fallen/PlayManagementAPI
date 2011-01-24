@@ -3,6 +3,8 @@ package implement;
 import java.util.List;
 import java.util.Properties;
 
+import org.jgroups.JChannel;
+
 import playmanagement.game.GameUId;
 import playmanagement.game.exceptions.GameManagementException;
 import playmanagement.game.instance.GameInstanceEvent;
@@ -17,10 +19,18 @@ import playmanagement.user.exceptions.RevokedTokenException;
 public class GameInstance implements GameInstanceListener, GameInstanceUId,
 		playmanagement.game.instance.GameInstance {
 
+	public JChannel Channel;
+	public String JGroupsConfigFile = "udp.xml";
+	public String GameInstanceChannelName = "GameInstance";
+	public Boolean Started = false;
+	public Boolean Paused = false;
+	public Game Game;
+	public Uid Uid;
+	
+	
 	@Override
 	public void notify(GameInstanceEvent event) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -81,27 +91,28 @@ public class GameInstance implements GameInstanceListener, GameInstanceUId,
 	public boolean isPaused(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
 		// TODO Auto-generated method stub
-		return false;
+		return Paused;
 	}
 
 	@Override
 	public boolean isStarted(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
-		// TODO Auto-generated method stub
-		return false;
+		return Started;
 	}
 
 	@Override
 	public boolean isStopped(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
 		// TODO Auto-generated method stub
-		return false;
+		return !Started;
 	}
 
 	@Override
 	public void pause(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
 		// TODO Auto-generated method stub
+		if (!Paused)
+			Paused = true;
 
 	}
 
@@ -131,15 +142,18 @@ public class GameInstance implements GameInstanceListener, GameInstanceUId,
 	@Override
 	public void start(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
-		// TODO Auto-generated method stub
+
+		if (!Started)
+			Started = true;
 
 	}
 
 	@Override
 	public void stop(RevocableToken requesterToken)
 			throws RevokedTokenException, InsufficientRightsException {
-		// TODO Auto-generated method stub
 
+			if (Started)
+				Started = false;
 	}
 
 }
