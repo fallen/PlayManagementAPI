@@ -1,6 +1,6 @@
 package implement;
 
-public class GameUId {
+public class UId {
 	private Integer Uid;
 
 	public Integer getUid() {
@@ -11,7 +11,7 @@ public class GameUId {
 		Uid = uid;
 	}
 
-	public GameUId(Integer uid) {
+	public UId(Integer uid) {
 		Uid = uid;
 	}
 

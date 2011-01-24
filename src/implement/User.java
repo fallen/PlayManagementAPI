@@ -6,32 +6,32 @@ import playmanagement.user.RevocableToken;
 
 public class User implements RevocableToken, LogonManager, AccountUId {
 	
-	private boolean state;
-	private long timeToLive;
+	private Token token;
 	private String login;
 	private String passwd;
-	private Integer Uid;
+	private UId gameUid;
 	
-	public Integer getUid() {
-		return Uid;
+
+	public UId getGameUid() {
+		return gameUid;
 	}
 
 	public User()
 	{
-		this.state = false;
-		this.timeToLive = 0;
 		this.login = null;
 		this.passwd = null;
+		this.gameUid = new UId(null);
+		this.token = new Token();
 	}
 
 	@Override
 	public boolean isRevoked() {
-		return this.state;
+		return this.token.isLife();
 	}
 
 	@Override
 	public void setTimeOut(long nbrOfSecondsOfValidity) {
-		this.timeToLive = nbrOfSecondsOfValidity;
+		this.token.setTimeToLive(nbrOfSecondsOfValidity);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 
 	@Override
 	public boolean isEqualTo(AccountUId accountUid) {
-		return this.Uid.equals(((User)accountUid).getUid());
+		return gameUid.getUid().equals(((User)accountUid).getGameUid().getUid());
 	}
 
 }
