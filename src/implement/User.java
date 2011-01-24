@@ -23,19 +23,11 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 		this.uid = new UId(null);
 		this.token = new Token();
 	}
-	
-	public User(String login, String passwd)
-	{
-		this.login = login;
-		this.passwd = passwd;
-		this.uid = new UId(null);
-		this.token = new Token();
-	}
 
 	public User(String loginName, String loginpwd) {
 		this.login = loginName;
 		this.passwd = loginpwd;
-		this.gameUid = new UId(null);
+		this.uid = new UId(null);
 		this.token = new Token();
 	}
 
