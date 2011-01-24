@@ -25,7 +25,7 @@ public class GameInstance implements GameInstanceListener, GameInstanceUId,
 	public Boolean Started = false;
 	public Boolean Paused = false;
 	public Game Game;
-	public Uid Uid;
+	public UId Uid;
 	
 	
 	@Override
