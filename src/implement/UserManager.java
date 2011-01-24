@@ -1,5 +1,6 @@
 package implement;
 
+import java.util.HashMap;
 import java.util.List;
 
 import playmanagement.rights.exceptions.InsufficientRightsException;
@@ -12,10 +13,14 @@ import playmanagement.user.exceptions.RevokedTokenException;
 
 public class UserManager implements AccountManager {
 
+	public HashMap<AccountUId, User> users; 
+	
 	@Override
 	public AccountUId createAccount(String loginName, String loginpwd)
 			throws AccountManagementException {
-		// TODO Auto-generated method stub
+			User u = new User(loginName, loginpwd);
+			AccountUId id /*= u.getUserAccountUId(token)*/ = null;
+			users.put(id, u);
 		return null;
 	}
 
