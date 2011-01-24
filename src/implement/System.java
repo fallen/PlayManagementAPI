@@ -16,7 +16,7 @@ public class System implements PlayManagementSystem {
 	public JChannel Channel;
 	public String JGroupsConfigFile = "udp.xml";
 	public String SignalingChannelName = "Signaling";
-	
+	public UserManager AccountManager;
 	
 	public System() throws ChannelException {
 		Channel = new JChannel(JGroupsConfigFile);
@@ -26,7 +26,7 @@ public class System implements PlayManagementSystem {
 	@Override
 	public AccountManager getAccountManager() {
 		// TODO Auto-generated method stub
-		return null;
+		return AccountManager;
 	}
 
 	@Override
