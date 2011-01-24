@@ -26,14 +26,12 @@ public class UId implements AccountUId, GameInstanceUId, GameUId{
 
 	@Override
 	public boolean isEqualTo(GameInstanceUId gameInstanceUid) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.Uid.equals(((UId)gameInstanceUid).getUid());
 	}
 
 	@Override
 	public boolean isEqualTo(GameUId gameUid) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.Uid.equals(((UId)gameUid).getUid());
 	}
 
 }
