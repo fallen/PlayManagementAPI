@@ -5,17 +5,33 @@ import playmanagement.user.LogonManager;
 import playmanagement.user.RevocableToken;
 
 public class User implements RevocableToken, LogonManager, AccountUId {
+	
+	private boolean state;
+	private long timeToLive;
+	private String login;
+	private String passwd;
+	private Integer Uid;
+	
+	public Integer getUid() {
+		return Uid;
+	}
+
+	public User()
+	{
+		this.state = false;
+		this.timeToLive = 0;
+		this.login = null;
+		this.passwd = null;
+	}
 
 	@Override
 	public boolean isRevoked() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.state;
 	}
 
 	@Override
 	public void setTimeOut(long nbrOfSecondsOfValidity) {
-		// TODO Auto-generated method stub
-
+		this.timeToLive = nbrOfSecondsOfValidity;
 	}
 
 	@Override
@@ -26,20 +42,21 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 
 	@Override
 	public RevocableToken login(String login, String pwd) {
-		// TODO Auto-generated method stub
+		if( this.login.equalsIgnoreCase(login) && this.passwd.equalsIgnoreCase(pwd))
+		{
+			return this;
+		}
 		return null;
 	}
 
 	@Override
 	public void logout(RevocableToken usertoken) {
-		// TODO Auto-generated method stub
-
+		((User)usertoken).setTimeOut(0);
 	}
 
 	@Override
 	public boolean isEqualTo(AccountUId accountUid) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.Uid.equals(((User)accountUid).getUid());
 	}
 
 }

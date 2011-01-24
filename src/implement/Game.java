@@ -16,6 +16,12 @@ import playmanagement.user.exceptions.RevokedTokenException;
 
 public class Game implements playmanagement.game.Game, GameUId,
 		GameInstancesManager {
+	
+	private Integer Uid;
+
+	public Integer getUid() {
+		return Uid;
+	}
 
 	@Override
 	public Properties getGameDescription() {
@@ -25,8 +31,7 @@ public class Game implements playmanagement.game.Game, GameUId,
 
 	@Override
 	public GameUId getGameUId() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -37,8 +42,7 @@ public class Game implements playmanagement.game.Game, GameUId,
 
 	@Override
 	public boolean isEqualTo(GameUId gameUid) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.Uid.equals(((Game)gameUid).getUid());
 	}
 
 	@Override
