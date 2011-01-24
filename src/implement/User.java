@@ -16,6 +16,10 @@ public class User implements RevocableToken, LogonManager, AccountUId {
 		return uid;
 	}
 
+	public Token getToken() {
+		return token;
+	}
+	
 	public User()
 	{
 		this.login = null;
